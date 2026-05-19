@@ -67,7 +67,7 @@ src/
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/todo-recoil.git
+git clone https://github.com/lucassloliveira/todo-recoil.git
 
 # Acesse a pasta do projeto
 cd todo-recoil
