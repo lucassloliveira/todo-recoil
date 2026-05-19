@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500&display=swap');
+
+/* ── Variáveis ── */
+:root {
+  --bg:        #0f0f13;
+  --surface:   #1a1a22;
+  --border:    #2e2e3a;
+  --accent:    #f97316;
+  --accent-dim:#7c3a12;
+  --text:      #f0f0f5;
+  --muted:     #6b6b80;
+  --done:      #3a3a48;
+  --radius:    10px;
+  --transition: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+#root {
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ── App ── */
+.app-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+  color: var(--text);
+}
+
+.app-title span {
+  color: var(--accent);
+}
+
+/* ── Formulário ── */
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.task-form input {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.task-form input::placeholder {
+  color: var(--muted);
+}
+
+.task-form input:focus {
+  border-color: var(--accent);
+}
+
+.btn-add {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 12px 20px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.btn-add:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ── Filtros ── */
+.task-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.btn-filter {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 16px;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-filter:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-filter:disabled {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  cursor: default;
+}
+
+/* ── Lista ── */
+.task-empty {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  animation: slideIn 0.18s ease;
+  transition: border-color var(--transition);
+}
+
+.task-item:hover {
+  border-color: var(--accent-dim);
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+.task-text {
+  flex: 1;
+  font-size: 0.95rem;
+  transition: color var(--transition);
+}
+
+.task-text.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.btn-toggle,
+.btn-remove {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.btn-toggle {
+  background: var(--done);
+  color: var(--text);
+}
+
+.btn-toggle.active {
+  background: #14532d;
+  color: #86efac;
+}
+
+.btn-toggle:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.btn-remove {
+  background: #2d1515;
+  color: #f87171;
+}
+
+.btn-remove:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
